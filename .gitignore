@@ -1,0 +1,12 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+dist/
+.env
+.env.local
+storage/
+chroma_db/
+uploaded_pdfs/
+.DS_Store

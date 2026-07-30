@@ -20,7 +20,7 @@
 
 <br />
 
-[⚡ Quick Start](#-quick-start--local-development) • [🎯 Vision Document](#-vision-document) • [🏗️ Architecture](#%EF%B8%8F-system-architecture) • [🌿 Branching Strategy](#-branching-strategy-github-flow) • [📊 MoSCoW Prioritization](#-moscow-prioritization)
+[🎯 Vision Document](#vision-document) • [📊 MoSCoW Prioritization](#moscow-prioritization) • [🏗️ Architecture](#system-architecture) • [🌿 Branching Strategy](#branching-strategy) • [⚡ Quick Start](#quick-start--local-development)
 
 ---
 
@@ -32,7 +32,7 @@
 
 ---
 
-## 🎯 Vision Document
+## Vision Document
 
 ### 1. Project Name & Overview
 **DocMind AI** is an enterprise-grade document intelligence system built to ingest, index, and query complex literature, medical records, and dense technical PDFs using Retrieval-Augmented Generation (RAG). By coupling local vector persistence with LLM orchestration, DocMind AI allows users to converse with their documents without risk of data hallucination.
@@ -57,3 +57,51 @@ Modern academic and clinical workflows suffer from **information fragmentation**
 * 📌 **Grounded Source Attribution:** Real-time UI highlighting linking every AI response directly to its source PDF page.
 
 ### 6. Success Metrics
+* ⚡ **Response Latency:** Retrieval and context-augmented response generated within < 2.5 seconds.
+* 🎯 **Accuracy Rate:** Zero hallucination on facts directly present within uploaded documents (grounded RAG verification).
+* 🔄 **Concurrency:** Support up to 50 simultaneous session chats via FastAPI asynchronous handlers.
+
+---
+
+## MoSCoW Prioritization
+
+| Category | Requirement / Feature | Justification / Description |
+| :--- | :--- | :--- |
+| **Must Have** | • PDF Upload & Chunking (`PyMuPDF`) <br> • Vector Store Ingestion (`ChromaDB`) <br> • RAG Pipeline with Gemini 1.5 API <br> • React Chat UI with Source Citations | Core RAG functionality required for the minimum viable product (MVP). System cannot function without these. |
+| **Should Have** | • User Auth & Session Storage (JWT + PostgreSQL) <br> • Docker Containerization (`docker-compose`) | Essential software engineering & security requirements for production deployment and isolation. |
+| **Could Have** | • Support for non-PDF formats (DOCX, TXT) <br> • Chat History Export (PDF/Markdown) <br> • Dark Mode UI toggle | Enhances user experience and flexibility, but not critical for the initial release. |
+| **Won't Have** *(this release)* | • Multi-tenant RBAC permissions <br> • Real-time Voice Chat Interface <br> • Local Fine-Tuned LLM Model | Explicitly out of scope for this academic submission due to timeline and hardware constraints. |
+
+---
+
+## System Architecture
+
+```mermaid
+flowchart TD
+    subgraph Client Layer
+        A[React Frontend / UI]
+    end
+
+    subgraph Backend Services
+        B[FastAPI Gateway]
+        C[PyMuPDF Tokenizer]
+        D[JWT Authentication]
+    end
+
+    subgraph Storage & Intelligence
+        E[(PostgreSQL - Users/Sessions)]
+        F[(ChromaDB - Vector Embeddings)]
+        G[Google Gemini 1.5 Flash API]
+    end
+
+    A -->|HTTPS Requests / JWT| B
+    B -->|User Auth Verification| D
+    D -->|Read/Write User Data| E
+    B -->|Upload PDF| C
+    C -->|Generate Chunks & Embeddings| F
+    A -->|User Query| B
+    B -->|Similarity Search| F
+    F -->|Top-K Context | B
+    B -->|Prompt + Context| G
+    G -->|Grounded Answer + Citations| B
+    B -->|JSON Response| A

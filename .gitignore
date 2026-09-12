@@ -10,3 +10,9 @@ storage/
 chroma_db/
 uploaded_pdfs/
 .DS_Store
+.env
+docmind-backend/.env
+__pycache__/
+*.pyc
+venv/
+.venv/

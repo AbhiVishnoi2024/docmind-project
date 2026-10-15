@@ -28,3 +28,4 @@ frontend/node_modules/
 cosmic-ray-session.sqlite
 mutation-results.json
 cosmic-ray-example.toml
+docmind-backend/docmind.db

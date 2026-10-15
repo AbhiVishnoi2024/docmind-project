@@ -23,3 +23,8 @@ docmind-backend/.venv/
 frontend/node_modules/
 **/__pycache__/
 **/*.py[cod]
+
+# Cosmic Ray mutation-testing artifacts
+cosmic-ray-session.sqlite
+mutation-results.json
+cosmic-ray-example.toml

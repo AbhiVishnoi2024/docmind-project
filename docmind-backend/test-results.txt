@@ -1,17 +1,17 @@
-============================= test session starts =============================
-platform win32 -- Python 3.12.7, pytest-9.1.1, pluggy-1.7.0 -- D:\Downloads\DocMind_AI_DA3_Starter\docmind-project-main\docmind-backend\.venv\Scripts\python.exe
-cachedir: .pytest_cache
-rootdir: D:\Downloads\DocMind_AI_DA3_Starter\docmind-project-main\docmind-backend
-configfile: pytest.ini
-testpaths: tests
-plugins: platformdirs-4.13.0, cov-7.1.0
-collecting ... collected 6 items
+    ============================= test session starts =============================
+    platform win32 -- Python 3.12.7, pytest-9.1.1, pluggy-1.7.0 -- D:\Downloads\DocMind_AI_DA3_Starter\docmind-project-main\docmind-backend\.venv\Scripts\python.exe
+    cachedir: .pytest_cache
+    rootdir: D:\Downloads\DocMind_AI_DA3_Starter\docmind-project-main\docmind-backend
+    configfile: pytest.ini
+    testpaths: tests
+    plugins: platformdirs-4.13.0, cov-7.1.0
+    collecting ... collected 6 items
 
-tests/test_pdf_pipeline_integration.py::test_pdf_extraction_and_chunking_integration PASSED [ 16%]
-tests/test_pdf_processor.py::test_extract_text_by_page_reads_text_and_page_numbers PASSED [ 33%]
-tests/test_pdf_processor.py::test_chunk_text_preserves_page_and_overlap PASSED [ 50%]
-tests/test_pdf_processor.py::test_chunk_text_skips_empty_pages PASSED    [ 66%]
-tests/test_pdf_processor.py::test_chunk_text_rejects_invalid_chunk_settings PASSED [ 83%]
-tests/test_pdf_processor.py::test_extract_text_rejects_invalid_pdf PASSED [100%]
+    tests/test_pdf_pipeline_integration.py::test_pdf_extraction_and_chunking_integration PASSED [ 16%]
+    tests/test_pdf_processor.py::test_extract_text_by_page_reads_text_and_page_numbers PASSED [ 33%]
+    tests/test_pdf_processor.py::test_chunk_text_preserves_page_and_overlap PASSED [ 50%]
+    tests/test_pdf_processor.py::test_chunk_text_skips_empty_pages PASSED    [ 66%]
+    tests/test_pdf_processor.py::test_chunk_text_rejects_invalid_chunk_settings PASSED [ 83%]
+    tests/test_pdf_processor.py::test_extract_text_rejects_invalid_pdf PASSED [100%]
 
-============================== 6 passed in 0.11s ==============================
+    ============================== 6 passed in 0.11s ==============================

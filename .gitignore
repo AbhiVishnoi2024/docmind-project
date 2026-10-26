@@ -29,3 +29,7 @@ cosmic-ray-session.sqlite
 mutation-results.json
 cosmic-ray-example.toml
 docmind-backend/docmind.db
+docmind.zip
+deploy-temp/
+docmind.zip
+deploy-temp/
